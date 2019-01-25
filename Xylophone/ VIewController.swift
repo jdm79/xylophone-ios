@@ -5,8 +5,6 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
     
     // this is of type AVAudioPlayer
     var audioPlayer: AVAudioPlayer!
-    var selectedNote : String = ""
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,15 +14,15 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
 
     @IBAction func notePressed(_ sender: UIButton) {
         
-        selectedNote = "note\(sender.tag)"
+//        selectedNote = "note\(sender.tag)"
         
-        playSound()
+        playSound(soundFileName: "note\(sender.tag)")
        
     }
     
-    func playSound() {
+    func playSound(soundFileName : String) {
         // sets up the location of where our sound is
-        let soundURL = Bundle.main.url(forResource: selectedNote, withExtension: "wav")
+        let soundURL = Bundle.main.url(forResource: soundFileName, withExtension: "wav")
         
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: soundURL!)
